@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>论文收件箱 · Daily Paper Reader</title>
+  <link rel="stylesheet" href="codex-reader.css">
+  <script defer src="vendor/lucide-0.468.0.min.js"></script>
+  <script defer src="codex-reader.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../">Daily Paper Reader</a>
+    <nav><a href="../?codex=1#/codex/README">阅读库 <i data-lucide="book-open"></i></a><button id="settings-open" title="订阅与处理设置" aria-label="订阅与处理设置"><i data-lucide="settings-2"></i></button></nav>
+  </header>
+  <main>
+    <div class="heading"><div><h1>论文收件箱</h1><p id="worker-status" class="muted">连接中</p></div><div class="commands"><button id="pause"><i data-lucide="pause"></i><span>暂停队列</span></button><button id="fetch" class="primary"><i data-lucide="rss"></i><span>抓取论文</span></button></div></div>
+    <div id="notice" role="status" hidden></div>
+    <section class="import-band" aria-label="手动导入">
+      <form id="import-form">
+        <label for="links">论文链接</label>
+        <textarea id="links" rows="3" placeholder="https://arxiv.org/abs/…" required></textarea>
+        <div class="import-actions"><div class="depth" role="group" aria-label="处理深度"><label><input type="radio" name="depth" value="quick" checked>速读</label><label><input type="radio" name="depth" value="deep">精读</label></div><button type="submit" id="import-button" class="primary"><i data-lucide="plus"></i>导入并处理</button></div>
+      </form>
+    </section>
+    <section class="library" aria-label="论文队列">
+      <div class="library-toolbar"><div id="filters" role="tablist" aria-label="任务状态"></div><label class="search"><i data-lucide="search"></i><input id="search" type="search" aria-label="搜索论文" placeholder="搜索论文"></label></div>
+      <div class="batch-bar"><label><input id="select-all" type="checkbox">本页全选</label><span id="selected-count">0 篇</span><select id="batch-depth" aria-label="批量处理深度"><option value="quick">速读</option><option value="deep">精读</option></select><button id="enqueue"><i data-lucide="play"></i>处理所选</button><button id="retry"><i data-lucide="rotate-cw"></i>重试</button><button id="ignore" title="移出待处理队列" aria-label="移出待处理队列"><i data-lucide="archive"></i></button></div>
+      <p id="fetch-status" class="muted"></p>
+      <div id="paper-list" aria-live="polite"></div>
+      <div class="pagination"><span id="page-info"></span><div><button id="previous" title="上一页" aria-label="上一页"><i data-lucide="chevron-left"></i></button><button id="next" title="下一页" aria-label="下一页"><i data-lucide="chevron-right"></i></button></div></div>
+    </section>
+  </main>
+  <dialog id="settings"><form id="settings-form"><div class="dialog-heading"><h2>订阅与处理</h2><button type="button" data-close="settings" title="关闭" aria-label="关闭"><i data-lucide="x"></i></button></div>
+    <label for="keywords">关键词（每行一个）</label><textarea id="keywords" rows="5"></textarea>
+    <fieldset><legend>论文来源</legend><label><input type="checkbox" name="source" value="huggingface">Hugging Face Daily Papers</label><label><input type="checkbox" name="source" value="arxiv">arXiv</label></fieldset>
+    <div class="settings-grid"><label>arXiv 回溯天数<input id="days" type="number" min="1" max="30" required></label><label>每个来源抓取上限<input id="fetch-limit" type="number" min="1" max="200" required></label><label>每日自动处理上限<input id="auto-process" type="number" min="0" max="20" required></label><label>每日抓取时间（本机时区）<input id="daily-hour" type="number" min="0" max="23" required></label></div>
+    <label class="checkbox"><input id="daily-enabled" type="checkbox">每日自动抓取</label><button class="primary" type="submit"><i data-lucide="save"></i>保存</button>
+  </form></dialog>
+  <dialog id="log-dialog"><div class="dialog-heading"><h2>处理日志</h2><button data-close="log-dialog" title="关闭" aria-label="关闭"><i data-lucide="x"></i></button></div><pre id="log-content"></pre></dialog>
+</body>
+</html>

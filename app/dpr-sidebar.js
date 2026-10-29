@@ -1717,7 +1717,9 @@
       renderQuickLink('dpr-sidebar-quick-home', homeHref, '🏠', homeLabel) +
       renderQuickLink('dpr-sidebar-quick-tutorial', tutorialHref, '📖', normalizeTutorialLabel(tutorialLabel)) +
       renderFeedbackQuickButton() +
-      '</header>'
+      '</header>' +
+      ((typeof window !== 'undefined' && window.location && /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)) ?
+        '<a href="app/codex-reader.html" data-no-router class="dpr-codex-inbox-link">Codex 收件箱</a>' : '')
     );
   }
 

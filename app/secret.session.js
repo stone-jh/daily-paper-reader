@@ -11,7 +11,9 @@
     const normalized = String(host || '').toLowerCase();
     return normalized.includes(FORCE_GUEST_DOMAIN_TOKEN);
   };
-  const FORCE_GUEST_MODE = isForceGuestDomain(window && window.location && window.location.hostname);
+  const LOCAL_CODEX_GUEST = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname || '') &&
+    new URLSearchParams(window.location.search || '').get('codex') === '1';
+  const FORCE_GUEST_MODE = LOCAL_CODEX_GUEST || isForceGuestDomain(window && window.location && window.location.hostname);
   const isLocalDebugHost = () => {
     const host = String((window.location && window.location.hostname) || '').toLowerCase();
     return host === 'localhost' || host === '127.0.0.1' || host === '::1';

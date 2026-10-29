@@ -4,6 +4,21 @@
 
 <h2 align="center">Your Daily Companion for Discovering and Reading AI Papers</h2>
 
+## 本 Fork：本机 Codex 论文收件箱
+
+这个 Fork 增加了独立的本地工作流：Hugging Face Daily Papers / arXiv 自动发现、
+手动批量导入链接、持久化任务队列，以及 Codex Agent 中文速读/精读。
+处理结果包含原文证据、PDF 页截图、全文和人工笔记区，在原有阅读器中查看。
+
+- 本地入口：<http://127.0.0.1:8568/app/codex-reader.html>。
+- macOS 启动：双击 `scripts/start_codex_reader.command`。
+- 安装、批量导入、订阅、停止与备份：[本地 Codex 使用说明](scripts/CODEX_READER.md)。
+- 使用本机 Codex 登录与额度；这条流程无需 DeepSeek Key 或网页 GitHub Token。
+- 每日抓取默认在本机时区 09:00，自动处理上限 3 篇；可在设置中修改。
+- 代码保存在 Fork，论文、配置、队列和日志保存在本机；未部署公开阅读站点。
+
+下方保留上游项目的介绍与 GitHub Actions / DeepSeek 使用方式。
+
 <p align="center">
   <a href="https://github.com/ziwenhahaha/daily-paper-reader/stargazers">
     <img src="https://img.shields.io/github/stars/ziwenhahaha/daily-paper-reader?style=flat-square" alt="Stars" />

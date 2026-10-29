@@ -18,6 +18,8 @@ chat.db-wal
 app.log
 *.log
 .local-runs/
+.codex-reader/
+docs/codex/
 
 # 本地环境配置
 .env

@@ -8856,3 +8856,11 @@ body.dpr-dark .dpr-sidebar-footer-btn {
   border-color: #334155;
   color: #cbd5e1;
 }
+/* Local Codex fork entry; keep the existing sidebar header controls intact. */
+.dpr-codex-inbox-link {
+  display: block;
+  padding: 10px 16px;
+  color: #247b60;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e5e7;
+}
